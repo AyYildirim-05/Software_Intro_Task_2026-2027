@@ -1,0 +1,4 @@
+source;share/intro_rover_description/local_setup.bash
+source;share/intro_rover_description/local_setup.dsv
+source;share/intro_rover_description/local_setup.sh
+source;share/intro_rover_description/local_setup.zsh

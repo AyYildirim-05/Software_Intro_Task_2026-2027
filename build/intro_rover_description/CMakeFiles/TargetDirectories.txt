@@ -1,0 +1,9 @@
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/uninstall.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/intro_rover_description_uninstall.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/test.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/edit_cache.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/rebuild_cache.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/list_install_components.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/install.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/install/local.dir
+/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/CMakeFiles/install/strip.dir

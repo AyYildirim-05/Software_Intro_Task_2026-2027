@@ -5,13 +5,6 @@ This repository contains a ROS2 workspace where packages can be added inside of 
 Keep in mind that the URDF is very detailed and might need to be modified in order to reduce detail.\
 Remember to go over documentation.
 
-## 1. Creating a local repository
-1.1. Make sure that your GitHub account is connected to your computer.\
-1.2. Fork this repository into your GitHub account.\
-1.3. Clone your fork of this repository onto your personal machine.
-
-## 2. Fix the intro_rover_description ROS2 package
-2.1. Apply the changes necessary to the files of the package in order to get it to work properly within ROS2.\
 
 ## 3. Visualize the robot in RViz
 3.1. Create a launch file to visualize the rover in the RViz software.
