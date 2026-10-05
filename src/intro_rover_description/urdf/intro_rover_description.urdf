@@ -181,7 +181,7 @@
       </geometry>
       <material
         name="">
-        <color
+        <color.r
           rgba="0.866666666666667 0.909803921568627 1 1" />
       </material>
     </visual>
