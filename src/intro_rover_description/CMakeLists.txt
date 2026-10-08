@@ -9,6 +9,14 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 
+# Install Python scripts as executables
+install(PROGRAMS
+  scripts/jointstate.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install directories to share
+install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY urdf DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 install(DIRECTORY meshes DESTINATION share/${PROJECT_NAME})

@@ -1,0 +1,29 @@
+[0.008s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description
+[0.025s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.217s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.224s] -- Found urdf: 2.10.1 (/opt/ros/jazzy/share/urdf/cmake)
+[0.237s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[0.241s] -- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[0.327s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.327s] -- Configured 'flake8' exclude dirs and/or files: 
+[0.327s] -- Added test 'lint_cmake' to check CMake code style
+[0.328s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.330s] -- Added test 'xmllint' to check XML markup files
+[0.330s] -- Configuring done (0.3s)
+[0.334s] -- Generating done (0.0s)
+[0.335s] -- Build files have been written to: /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.341s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description
+[0.343s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.390s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.400s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.406s] -- Install configuration: ""
+[0.406s] -- Execute custom install script
+[0.407s] [31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:209 (message):
+[0.407s]   ament_cmake_symlink_install_programs() can't find
+[0.407s]   '/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description/scripts/jointstate.py'
+[0.407s] Call Stack (most recent call first):
+[0.407s]   ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:319 (ament_cmake_symlink_install_programs)
+[0.407s]   cmake_install.cmake:46 (include)
+[0.407s] 
+[0.407s] [0m
+[0.408s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description

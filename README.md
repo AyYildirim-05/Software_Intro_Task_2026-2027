@@ -10,7 +10,7 @@ Remember to go over documentation.
 3.1. Create a launch file to visualize the rover in the RViz software.
 
 ## 4. Create a Ros2 infrastructure to control the rover in RViz
-4.1. Create a node to manually control each joint of the rover.\
+4.1. Create a node to manually control each joint of the rover.
 4.2. Create a node to make the rover dance. This should be a reprogrammed sequence or a function of the joint states over time.
 
 ## 5. Simulate the robot in Gazebo Harmonic

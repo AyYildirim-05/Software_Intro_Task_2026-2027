@@ -9,3 +9,8 @@ cd /home/ahmet/projects/Software_Intro_Task_2026-2027
 source /opt/ros/jazzy/setup.bash
 source install/setup.bash
 rviz2 -d src/intro_rover_description/config/rover.rviz
+
+# run animation
+ros2 launch intro_rover_description dance.launch.py
+ros2 topic echo /joint_states
+ros2 topic echo /tf

@@ -1,0 +1,8 @@
+[31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:209 (message):
+  ament_cmake_symlink_install_programs() can't find
+  '/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description/scripts/jointstate.py'
+Call Stack (most recent call first):
+  ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:319 (ament_cmake_symlink_install_programs)
+  cmake_install.cmake:46 (include)
+
+[0m
