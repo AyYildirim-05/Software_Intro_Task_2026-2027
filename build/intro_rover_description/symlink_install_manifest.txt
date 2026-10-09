@@ -3,6 +3,7 @@
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/urdf/intro_rover_description.urdf
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/dance.launch.py
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/launch_code.md
+/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/spawn_gazebo.launch.py
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/view_rover.launch.py
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/base_link.STL
 /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/bl_swerve_yaw_link.STL
