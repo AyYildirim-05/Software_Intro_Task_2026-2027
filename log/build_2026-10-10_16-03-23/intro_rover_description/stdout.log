@@ -1,0 +1,48 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found urdf: 2.10.1 (/opt/ros/jazzy/share/urdf/cmake)
+-- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/lib/intro_rover_description/jointstate.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/lib/intro_rover_description/manual_gazebo_control.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/config/rover.rviz
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/urdf/intro_rover_description.urdf
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/dance.launch.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/launch_code.md
+-- Symlinking: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/manual_gazebo_control.launch.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/spawn_gazebo.launch.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/view_rover.launch.py
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/base_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/bl_swerve_yaw_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/bl_wheel_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/br_swerve_yaw_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/br_wheel_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/elbow_pitch_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/elbow_roll_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fl_swerve_yaw_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fl_wheel_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fr_swerve_yaw_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fr_wheel_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/shoulder_pitch_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/shoulder_yaw_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/wrist_pitch_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/wrist_roll_link.STL
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/package_run_dependencies/intro_rover_description
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/parent_prefix_path/intro_rover_description
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/path.sh
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/path.dsv
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.bash
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.sh
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.zsh
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.dsv
+-- Symlinking: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/package.dsv
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/packages/intro_rover_description
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/cmake/intro_rover_descriptionConfig.cmake
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/cmake/intro_rover_descriptionConfig-version.cmake
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/package.xml

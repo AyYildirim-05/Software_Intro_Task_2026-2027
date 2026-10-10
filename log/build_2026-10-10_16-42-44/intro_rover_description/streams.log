@@ -1,0 +1,24 @@
+[0.009s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description
+[0.026s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.251s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.258s] -- Found urdf: 2.10.1 (/opt/ros/jazzy/share/urdf/cmake)
+[0.273s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[0.365s] -- Configuring done (0.3s)
+[0.367s] -- Generating done (0.0s)
+[0.368s] -- Build files have been written to: /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.372s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description
+[0.374s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.420s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.433s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.444s] -- Install configuration: "RelWithDebInfo"
+[0.445s] -- Execute custom install script
+[0.445s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/lib/intro_rover_description/jointstate.py
+[0.445s] [31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:209 (message):
+[0.446s]   ament_cmake_symlink_install_programs() can't find
+[0.446s]   '/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description/scripts/manual_gazebo_control.py'
+[0.446s] Call Stack (most recent call first):
+[0.446s]   ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:319 (ament_cmake_symlink_install_programs)
+[0.446s]   cmake_install.cmake:46 (include)
+[0.446s] 
+[0.446s] [0m
+[0.447s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description

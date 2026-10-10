@@ -1,0 +1,10 @@
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found urdf: 2.10.1 (/opt/ros/jazzy/share/urdf/cmake)
+-- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+-- Install configuration: "RelWithDebInfo"
+-- Execute custom install script
+-- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/lib/intro_rover_description/jointstate.py

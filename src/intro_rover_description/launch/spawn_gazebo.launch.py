@@ -11,7 +11,7 @@ import shutil
 def generate_launch_description():
     pkg_share = get_package_share_directory('intro_rover_description')
     urdf_file = os.path.join(pkg_share, 'urdf', 'intro_rover_description.urdf')
-    gz_resource_root = os.path.dirname(pkg_share)
+    gz_resource_root = pkg_share
     existing_gz_resources = os.environ.get('GZ_SIM_RESOURCE_PATH', '')
     gz_resource_path = os.pathsep.join([
         gz_resource_root,
