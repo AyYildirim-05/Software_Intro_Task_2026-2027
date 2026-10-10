@@ -1,0 +1,51 @@
+[0.009s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.042s] -- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.302s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.307s] -- Found urdf: 2.10.1 (/opt/ros/jazzy/share/urdf/cmake)
+[0.323s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[0.429s] -- Configuring done (0.4s)
+[0.433s] -- Generating done (0.0s)
+[0.436s] -- Build files have been written to: /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.471s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.486s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
+[0.497s] -- Install configuration: "RelWithDebInfo"
+[0.497s] -- Execute custom install script
+[0.497s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/lib/intro_rover_description/jointstate.py
+[0.498s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/config/rover.rviz
+[0.498s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/urdf/intro_rover_description.urdf
+[0.498s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/dance.launch.py
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/launch_code.md
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/manual_gazebo_control.py
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/spawn_gazebo.launch.py
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/launch/view_rover.launch.py
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/base_link.STL
+[0.499s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/bl_swerve_yaw_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/bl_wheel_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/br_swerve_yaw_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/br_wheel_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/elbow_pitch_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/elbow_roll_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fl_swerve_yaw_link.STL
+[0.500s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fl_wheel_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fr_swerve_yaw_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/fr_wheel_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/shoulder_pitch_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/shoulder_yaw_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/wrist_pitch_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/meshes/wrist_roll_link.STL
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/package_run_dependencies/intro_rover_description
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/parent_prefix_path/intro_rover_description
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/ament_prefix_path.sh
+[0.501s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/ament_prefix_path.dsv
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/path.sh
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/environment/path.dsv
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.bash
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.sh
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.zsh
+[0.502s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/local_setup.dsv
+[0.502s] -- Symlinking: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/package.dsv
+[0.516s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/ament_index/resource_index/packages/intro_rover_description
+[0.516s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/cmake/intro_rover_descriptionConfig.cmake
+[0.516s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/cmake/intro_rover_descriptionConfig-version.cmake
+[0.516s] -- Up-to-date symlink: /home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/package.xml
+[0.519s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description
