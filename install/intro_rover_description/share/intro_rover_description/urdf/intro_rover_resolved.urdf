@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="intro_rover_description">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.159441508318599 -0.00201297047389094 0.109571758615536" rpy="0 0 0" />
+      <mass value="36.4066511101417" />
+      <inertia ixx="1.5499283374339" ixy="-0.00132549959175393" ixz="0.0644564045339533" iyy="1.39540056224361" iyz="6.22362010171048E-06" izz="2.75295987581913" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/base_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ==================== ARM JOINTS & LINKS ==================== -->
+  <link name="shoulder_yaw_link">
+    <inertial>
+      <origin xyz="0.0158551675973452 6.95941140680213E-07 0.0434857349337384" rpy="0 0 0" />
+      <mass value="1.28741900135628" />
+      <inertia ixx="0.002923" ixy="1.27E-09" ixz="-4.49E-05" iyy="0.002003" iyz="-4.12E-05" izz="0.002454" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/shoulder_yaw_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/shoulder_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="shoulder_yaw" type="continuous">
+    <origin xyz="0.17253 0 0.14797" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="shoulder_yaw_link" />
+    <axis xyz="0 0 -1" />
+    <limit effort="30.0" velocity="2.0" />
+  </joint>
+
+  <link name="shoulder_pitch_link">
+    <inertial>
+      <origin xyz="-0.235784030734697 0.160725027988444 0.00442874565751497" rpy="0 0 0" />
+      <mass value="1.26648994974177" />
+      <inertia ixx="0.000698" ixy="-6.55E-09" ixz="1.60E-05" iyy="0.001835" iyz="-3.96E-07" izz="0.001611" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/shoulder_pitch_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/shoulder_pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="shoulder_pitch" type="revolute">
+    <origin xyz="-0.10715 0 0.076542" rpy="1.5708 1.5708 0" />
+    <parent link="shoulder_yaw_link" />
+    <child link="shoulder_pitch_link" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.57" upper="1.57" effort="30.0" velocity="2.0" />
+  </joint>
+
+  <link name="elbow_pitch_link">
+    <inertial>
+      <origin xyz="-0.0297946731431505 0.124653021086681 -0.0420890356639063" rpy="0 0 0" />
+      <mass value="1.25099522762874" />
+      <inertia ixx="0.001840" ixy="-1.42E-06" ixz="2.64E-06" iyy="0.002616" iyz="-5.00E-06" izz="0.001981" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/elbow_pitch_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/elbow_pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="elbow_pitch" type="revolute">
+    <origin xyz="-0.42291 0.0032138 0.0097054" rpy="-0.60031 -1.5496 0.60041" />
+    <parent link="shoulder_pitch_link" />
+    <child link="elbow_pitch_link" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.57" upper="1.57" effort="30.0" velocity="2.0" />
+  </joint>
+
+  <link name="elbow_roll_link">
+    <inertial>
+      <origin xyz="0.439831344616685 0.000390168758616118 -0.0325375284483432" rpy="0 0 0" />
+      <mass value="0.902549918350809" />
+      <inertia ixx="0.000518" ixy="7.82E-08" ixz="-6.18E-08" iyy="0.001528" iyz="1.04E-06" izz="0.001442" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/elbow_roll_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/elbow_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="elbow_roll" type="continuous">
+    <origin xyz="-0.046 0.09095 -0.252" rpy="-1.557 -1.5708 3.1158" />
+    <parent link="elbow_pitch_link" />
+    <child link="elbow_roll_link" />
+    <axis xyz="-1 0 0" />
+    <limit effort="15.0" velocity="3.0" />
+  </joint>
+
+  <link name="wrist_pitch_link">
+    <inertial>
+      <origin xyz="0.00337802196193002 -0.17277332026333 0.0398409446348469" rpy="0 0 0" />
+      <mass value="0.563910634986513" />
+      <inertia ixx="0.000497" ixy="1.97E-08" ixz="4.08E-06" iyy="0.000704" iyz="-4.64E-07" izz="0.000365" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/wrist_pitch_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/wrist_pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="wrist_pitch" type="revolute">
+    <origin xyz="0.6275 0.0024183 -0.20169" rpy="-1.5708 0.01199 -1.5708" />
+    <parent link="elbow_roll_link" />
+    <child link="wrist_pitch_link" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.57" upper="1.57" effort="15.0" velocity="3.0" />
+  </joint>
+
+  <link name="wrist_roll_link">
+    <inertial>
+      <origin xyz="0.099122460242409 -0.00022817475073067 -0.00311535948377381" rpy="0 0 0" />
+      <mass value="0.322364394266088" />
+      <inertia ixx="9.31E-05" ixy="4.20E-07" ixz="-1.65E-05" iyy="0.000263" iyz="-1.80E-07" izz="0.000286" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/wrist_roll_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/wrist_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="wrist_roll" type="continuous">
+    <origin xyz="-0.00381 -0.18515 0.12524" rpy="1.5871 -1.5404 -3.1416" />
+    <parent link="wrist_pitch_link" />
+    <child link="wrist_roll_link" />
+    <axis xyz="1 0 0" />
+    <limit effort="10.0" velocity="3.0" />
+  </joint>
+
+  <!-- ==================== FRONT RIGHT MODULE ==================== -->
+  <link name="fr_swerve_yaw_link">
+    <inertial>
+      <origin xyz="4.34E-06 0.042424 -0.052492" rpy="0 0 0" />
+      <mass value="0.55447" />
+      <inertia ixx="0.000561" ixy="4.05E-08" ixz="4.30E-08" iyy="0.000539" iyz="3.10E-06" izz="0.000492" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fr_swerve_yaw_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fr_swerve_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fr_swerve_yaw" type="revolute">
+    <origin xyz="0.4237 -0.51488 -0.048437" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="fr_swerve_yaw_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="20.0" velocity="4.0" />
+  </joint>
+
+  <link name="fr_wheel_link">
+    <inertial>
+      <origin xyz="-0.000282 0.061328 0.000113" rpy="0 0 0" />
+      <mass value="1.5583" />
+      <inertia ixx="0.008356" ixy="-6.59E-07" ixz="-3.74E-06" iyy="0.013101" iyz="8.49E-07" izz="0.008358" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fr_wheel_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fr_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fr_wheel" type="continuous">
+    <origin xyz="0.00021236 -0.0574662 -0.2015837" rpy="0 0 0" />
+    <parent link="fr_swerve_yaw_link" />
+    <child link="fr_wheel_link" />
+    <axis xyz="0 1 0" />
+    <limit effort="40.0" velocity="20.0" />
+  </joint>
+
+  <!-- ==================== BACK RIGHT MODULE ==================== -->
+  <link name="br_swerve_yaw_link">
+    <inertial>
+      <origin xyz="-3.16E-06 0.042424 -0.052455" rpy="0 0 0" />
+      <mass value="0.55447" />
+      <inertia ixx="0.000561" ixy="-3.09E-08" ixz="2.98E-08" iyy="0.000539" iyz="3.41E-06" izz="0.000492" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/br_swerve_yaw_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/br_swerve_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="br_swerve_yaw" type="revolute">
+    <origin xyz="-0.4663 -0.51488 -0.025937" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="br_swerve_yaw_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="20.0" velocity="4.0" />
+  </joint>
+
+  <link name="br_wheel_link">
+    <inertial>
+      <origin xyz="0.000274 0.061328 -0.000131" rpy="0 0 0" />
+      <mass value="1.5583" />
+      <inertia ixx="0.008355" ixy="6.03E-07" ixz="-3.59E-06" iyy="0.013101" iyz="-8.90E-07" izz="0.008358" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/br_wheel_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/br_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="br_wheel" type="continuous">
+    <origin xyz="-0.0002104 -0.0574662 -0.2015228" rpy="0 0 0" />
+    <parent link="br_swerve_yaw_link" />
+    <child link="br_wheel_link" />
+    <axis xyz="0 1 0" />
+    <limit effort="40.0" velocity="20.0" />
+  </joint>
+
+  <!-- ==================== FRONT LEFT MODULE ==================== -->
+  <link name="fl_swerve_yaw_link">
+    <inertial>
+      <origin xyz="3.16E-06 -0.042424 -0.052455" rpy="0 0 0" />
+      <mass value="0.55447" />
+      <inertia ixx="0.000561" ixy="-3.09E-08" ixz="-2.98E-08" iyy="0.000539" iyz="-3.41E-06" izz="0.000492" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fl_swerve_yaw_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fl_swerve_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fl_swerve_yaw" type="revolute">
+    <origin xyz="0.4237 0.51488 -0.025938" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="fl_swerve_yaw_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="20.0" velocity="4.0" />
+  </joint>
+
+  <link name="fl_wheel_link">
+    <inertial>
+      <origin xyz="-0.000274 -0.061328 -0.000131" rpy="0 0 0" />
+      <mass value="1.5583" />
+      <inertia ixx="0.008355" ixy="6.03E-07" ixz="3.59E-06" iyy="0.013101" iyz="8.90E-07" izz="0.008358" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fl_wheel_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/fl_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fl_wheel" type="continuous">
+    <origin xyz="0.0002104 0.0574662 -0.2015228" rpy="0 0 0" />
+    <parent link="fl_swerve_yaw_link" />
+    <child link="fl_wheel_link" />
+    <axis xyz="0 1 0" />
+    <limit effort="40.0" velocity="20.0" />
+  </joint>
+
+  <!-- ==================== BACK LEFT MODULE ==================== -->
+  <link name="bl_swerve_yaw_link">
+    <inertial>
+      <origin xyz="-4.34E-06 -0.042424 -0.052492" rpy="0 0 0" />
+      <mass value="0.55447" />
+      <inertia ixx="0.000561" ixy="4.05E-08" ixz="-4.30E-08" iyy="0.000539" iyz="-3.10E-06" izz="0.000492" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/bl_swerve_yaw_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/bl_swerve_yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="bl_swerve_yaw" type="revolute">
+    <origin xyz="-0.4662998 0.5148838 -0.0484375" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="bl_swerve_yaw_link" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.57" upper="1.57" effort="20.0" velocity="4.0" />
+  </joint>
+
+  <link name="bl_wheel_link">
+    <inertial>
+      <origin xyz="0.000282 -0.061328 0.000113" rpy="0 0 0" />
+      <mass value="1.5583" />
+      <inertia ixx="0.008356" ixy="-6.59E-07" ixz="3.74E-06" iyy="0.013101" iyz="-8.49E-07" izz="0.008358" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/bl_wheel_link.STL" />
+      </geometry>
+      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://intro_rover_description/meshes/bl_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="bl_wheel" type="continuous">
+    <origin xyz="-0.0002124 0.0574662 -0.2015837" rpy="0 0 0" />
+    <parent link="bl_swerve_yaw_link" />
+    <child link="bl_wheel_link" />
+    <axis xyz="0 1 0" />
+    <limit effort="40.0" velocity="20.0" />
+  </joint>
+
+  <!-- ==================== ROS 2 CONTROL ==================== -->
+  <ros2_control name="GazeboSimSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <!-- Arm Position Interfaces -->
+    <joint name="shoulder_yaw">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="shoulder_pitch">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="elbow_pitch">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="elbow_roll">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_pitch">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="wrist_roll">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <!-- Swerve Steering Position Interfaces -->
+    <joint name="fl_swerve_yaw">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="fr_swerve_yaw">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="bl_swerve_yaw">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="br_swerve_yaw">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <!-- Swerve Wheel Velocity Interfaces -->
+    <joint name="fl_wheel">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="fr_wheel">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="bl_wheel">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="br_wheel">
+      <command_interface name="velocity"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <!-- Gazebo Sim ros2_control System Plugin -->
+  <gazebo>
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>/home/ahmet/projects/Software_Intro_Task_2026-2027/install/intro_rover_description/share/intro_rover_description/config/rover_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+</robot>

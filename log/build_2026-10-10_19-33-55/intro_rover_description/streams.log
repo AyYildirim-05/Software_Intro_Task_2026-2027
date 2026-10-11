@@ -1,0 +1,8 @@
+[0.011s] Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+[0.033s] [31mCMake Error at CMakeLists.txt:36:
+[0.034s]   Parse error.  Expected a newline, got identifier with text "ament_package".
+[0.034s] 
+[0.034s] [0m
+[0.034s] -- Configuring incomplete, errors occurred!
+[0.036s] gmake: *** [Makefile:226: cmake_check_build_system] Error 1
+[0.039s] Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12

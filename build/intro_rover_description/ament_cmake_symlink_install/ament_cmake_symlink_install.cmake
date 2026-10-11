@@ -315,20 +315,11 @@ message(STATUS "Execute custom install script")
 
 # begin of custom install code
 
-# install(PROGRAMS "scripts/jointstate.py" "DESTINATION" "lib/intro_rover_description")
-ament_cmake_symlink_install_programs("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" PROGRAMS "scripts/jointstate.py" "DESTINATION" "lib/intro_rover_description")
+# install(PROGRAMS "scripts/jointstate.py" "scripts/rover_teleop.py" "DESTINATION" "lib/intro_rover_description")
+ament_cmake_symlink_install_programs("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" PROGRAMS "scripts/jointstate.py" "scripts/rover_teleop.py" "DESTINATION" "lib/intro_rover_description")
 
-# install(DIRECTORY "config" "DESTINATION" "share/intro_rover_description")
-ament_cmake_symlink_install_directory("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" DIRECTORY "config" "DESTINATION" "share/intro_rover_description")
-
-# install(DIRECTORY "urdf" "DESTINATION" "share/intro_rover_description")
-ament_cmake_symlink_install_directory("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" DIRECTORY "urdf" "DESTINATION" "share/intro_rover_description")
-
-# install(DIRECTORY "launch" "DESTINATION" "share/intro_rover_description")
-ament_cmake_symlink_install_directory("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" DIRECTORY "launch" "DESTINATION" "share/intro_rover_description")
-
-# install(DIRECTORY "meshes" "DESTINATION" "share/intro_rover_description")
-ament_cmake_symlink_install_directory("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" DIRECTORY "meshes" "DESTINATION" "share/intro_rover_description")
+# install(DIRECTORY "urdf" "meshes" "launch" "config" "DESTINATION" "share/intro_rover_description")
+ament_cmake_symlink_install_directory("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" DIRECTORY "urdf" "meshes" "launch" "config" "DESTINATION" "share/intro_rover_description")
 
 # install(FILES "/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/intro_rover_description" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")
 ament_cmake_symlink_install_files("/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description" FILES "/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/intro_rover_description" "DESTINATION" "share/ament_index/resource_index/package_run_dependencies")

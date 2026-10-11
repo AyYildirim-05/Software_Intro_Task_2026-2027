@@ -1,0 +1,6 @@
+[31mCMake Error at CMakeLists.txt:36:
+  Parse error.  Expected a newline, got identifier with text "ament_package".
+
+[0m
+-- Configuring incomplete, errors occurred!
+gmake: *** [Makefile:226: cmake_check_build_system] Error 1

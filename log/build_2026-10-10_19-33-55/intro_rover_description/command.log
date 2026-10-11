@@ -1,0 +1,2 @@
+Invoking command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12
+Invoked command in '/home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/ahmet/projects/Software_Intro_Task_2026-2027/build/intro_rover_description -- -j12 -l12

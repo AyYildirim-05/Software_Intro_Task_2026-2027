@@ -14,7 +14,7 @@ Remember to go over documentation.
 4.2. Create a node to make the rover dance. This should be a reprogrammed sequence or a function of the joint states over time.
 
 ## 5. Simulate the robot in Gazebo Harmonic
-5.1. Create a launch file that spawns the rover in a Gazebo world. Please make sure to use Gazebo Harmonic as this version of Gazebo works better with ROS2 Jazzy.\
+5.1. Create a launch file that spawns the rover in a Gazebo world. Please make sure to use Gazebo Harmonic as this version of Gazebo works better with ROS2 Jazzy.
 5.2. Control the rover with the control infrastructure built in part 4. and see it move in the Gazebo world.
 
 ## 6. Be ready to present your solution

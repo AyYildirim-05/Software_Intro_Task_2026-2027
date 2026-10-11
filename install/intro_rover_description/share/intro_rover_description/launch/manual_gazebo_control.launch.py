@@ -1,1 +1,0 @@
-/home/ahmet/projects/Software_Intro_Task_2026-2027/src/intro_rover_description/launch/manual_gazebo_control.launch.py
