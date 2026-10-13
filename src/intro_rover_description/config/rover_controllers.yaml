@@ -6,7 +6,7 @@ controller_manager:
       type: joint_state_broadcaster/JointStateBroadcaster
 
     wheel_velocity_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+      type: velocity_controllers/JointGroupVelocityController
 
     steering_position_controller:
       type: joint_trajectory_controller/JointTrajectoryController
@@ -24,18 +24,6 @@ wheel_velocity_controller:
       - fr_wheel
       - bl_wheel
       - br_wheel
-    command_interfaces:
-      - velocity
-    state_interfaces:
-      - position
-      - velocity
-    allow_nonzero_velocity_at_trajectory_end: true
-    interpolate_from_desired_state: true
-    gains:
-      fl_wheel: {p: 20.0, i: 0.0, d: 0.5}
-      fr_wheel: {p: 20.0, i: 0.0, d: 0.5}
-      bl_wheel: {p: 20.0, i: 0.0, d: 0.5}
-      br_wheel: {p: 20.0, i: 0.0, d: 0.5}
 
 steering_position_controller:
   ros__parameters:
