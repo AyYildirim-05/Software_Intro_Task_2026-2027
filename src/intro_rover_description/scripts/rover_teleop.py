@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-
 import math
 import os
 import select
+import subprocess
 import sys
 import termios
 import time
@@ -21,10 +21,10 @@ INSTRUCTIONS = """
 Motion Controls (Hold to move, release to stop):
    w : Drive Forward
    s : Drive Backward
-   a : Turn Left (4-Wheel Ackermann)
-   d : Turn Right (4-Wheel Ackermann)
-   q : Rotate CCW (In-Place Swerve)
-   e : Rotate CW (In-Place Swerve)
+   a : Turn Left
+   d : Turn Right
+   q : Rotate CCW 
+   e : Rotate CW
 
 Speed Tuning:
    ] : Increase wheel velocity
@@ -45,7 +45,8 @@ Arm Joint Selection (Chronological Base -> Tip):
    - : Rotate selected joint CCW (-)
    = : Rotate selected joint CW (+)
 
-Exit:
+Reset & Exit:
+   r : Reset Rover
    x / Ctrl+C : Quit
 ========================================
 """
@@ -202,6 +203,29 @@ class RoverTeleopNode(Node):
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
         self.publish_commands(force_steer=True)
 
+    def reset_rover(self):
+        # 1. Stop wheels and zero swerve steering in both Gazebo & RViz
+        self.stop()
+
+        # 2. Return all 6 arm joints to home (0.0 rad) in both Gazebo & RViz
+        self.send_arm_positions([0.0] * len(self.arm_joints), duration_ns=int(3e8))
+
+        # 3. Teleport rover model in Gazebo back to initial spawn pose (0, 0, 0.5) without resetting /clock
+        subprocess.Popen(
+            [
+                'gz', 'service',
+                '-s', '/world/mars/set_pose',
+                '--reqtype', 'gz.msgs.Pose',
+                '--reptype', 'gz.msgs.Boolean',
+                '--timeout', '1000',
+                '--req',
+                'name: "intro_rover", position: {x: 0.0, y: 0.0, z: 0.5}, '
+                'orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}',
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+
     def send_arm_positions(self, positions, duration_ns=int(5e8)):
         self.arm_positions = [float(p) for p in positions]
         traj = JointTrajectory()
@@ -350,6 +374,12 @@ def main(args=None):
             elif key == '3':
                 node.send_arm_positions([0.0, -1.0, 1.2, 0.5, 0.2, 1.0])
                 print('\r[ARM] High / Wave Pose              ', end='', flush=True)
+
+            elif key == 'r':
+                node.reset_rover()
+                last_motion_key = None
+                is_repeating = False
+                print('\rReset         ', end='', flush=True)
 
             elif key in ('x', '\x03'):
                 node.stop()

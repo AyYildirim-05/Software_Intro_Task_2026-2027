@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import math
+import subprocess
 
 from builtin_interfaces.msg import Duration
 from geometry_msgs.msg import Twist
@@ -151,10 +152,14 @@ class JoyDemuxNode(Node):
                     self.active_arm_joint_idx = joint_idx
 
         # Optional reset button (Options)
-        if self.arm_reset_btn < len(msg.buttons) and msg.buttons[self.arm_reset_btn] == 1:
-            self.arm_positions = [0.0] * len(self.arm_joints)
-            self.publish_arm_trajectory()
-            self.get_logger().info('Reset all arm joints to home position (0.0 rad).')
+        if self.arm_reset_btn < len(msg.buttons):
+            was_reset = (
+                self.arm_reset_btn < len(self._prev_buttons)
+                and self._prev_buttons[self.arm_reset_btn] == 1
+            )
+            if msg.buttons[self.arm_reset_btn] == 1 and not was_reset:
+                self.reset_rover()
+                self.get_logger().info('Reset rover pose and all joints to home position.')
 
         self._prev_buttons = list(msg.buttons)
 
@@ -249,6 +254,27 @@ class JoyDemuxNode(Node):
         pt.time_from_start = Duration(sec=0, nanosec=int(5e7))  # 50 ms
         traj.points = [pt]
         self.arm_pub.publish(traj)
+
+    def reset_rover(self):
+        self.target_v = [0.0, 0.0, 0.0, 0.0]
+        self.target_steer = [0.0, 0.0, 0.0, 0.0]
+        self._last_sent_steer = None
+        self.arm_positions = [0.0] * len(self.arm_joints)
+        self.publish_arm_trajectory()
+        subprocess.Popen(
+            [
+                'gz', 'service',
+                '-s', '/world/mars/set_pose',
+                '--reqtype', 'gz.msgs.Pose',
+                '--reptype', 'gz.msgs.Boolean',
+                '--timeout', '1000',
+                '--req',
+                'name: "intro_rover", position: {x: 0.0, y: 0.0, z: 0.5}, '
+                'orientation: {x: 0.0, y: 0.0, z: 0.0, w: 1.0}',
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
     def control_loop(self):
         # 1. Publish wheel velocities
