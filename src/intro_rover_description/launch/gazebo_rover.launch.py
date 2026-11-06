@@ -40,12 +40,13 @@ def generate_launch_description():
         gz_resource_path,
     )
 
-    # 1. Start Gazebo Sim with empty world unpaused (-r)
+    # 1. Start Gazebo Sim with Martian soil world unpaused (-r)
+    world_file = os.path.join(pkg_share, 'config', 'mars.sdf')
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(ros_gz_sim_share, 'launch', 'gz_sim.launch.py')
         ),
-        launch_arguments={'gz_args': '-r empty.sdf'}.items()
+        launch_arguments={'gz_args': f'-r {world_file}'}.items()
     )
 
     # 2. Bridge Gazebo Clock to ROS Clock
@@ -65,12 +66,23 @@ def generate_launch_description():
         parameters=[{'robot_description': urdf_content, 'use_sim_time': True}]
     )
 
-    # 4. Spawn rover entity into Gazebo Sim
+    # 4. RViz2 Visualizer
+    rviz_config_path = os.path.join(pkg_share, 'config', 'rover.rviz')
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config_path],
+        parameters=[{'use_sim_time': True}]
+    )
+
+    # 5. Spawn rover entity into Gazebo Sim
     spawn = Node(
         package='ros_gz_sim',
         executable='create',
         arguments=[
-            '-world', 'empty',
+            '-world', 'mars',
             '-file', processed_urdf_file,
             '-name', 'intro_rover',
             '-x', '0.0', '-y', '0.0', '-z', '0.5'
@@ -80,7 +92,7 @@ def generate_launch_description():
 
     delayed_spawn = TimerAction(period=3.0, actions=[spawn])
 
-    # 5. Controller Spawners
+    # 6. Controller Spawners
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -132,6 +144,7 @@ def generate_launch_description():
         gz_sim,
         clock_bridge,
         rsp_node,
+        rviz_node,
         delayed_spawn,
         load_jsb_after_spawn,
         load_controllers_after_jsb,

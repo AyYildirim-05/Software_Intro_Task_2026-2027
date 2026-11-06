@@ -35,12 +35,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/shoulder_yaw_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="shoulder_yaw" type="continuous">
@@ -64,12 +58,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/shoulder_pitch_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="shoulder_pitch" type="revolute">
@@ -93,12 +81,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/elbow_pitch_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="elbow_pitch" type="revolute">
@@ -122,12 +104,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/elbow_roll_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="elbow_roll" type="continuous">
@@ -151,12 +127,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/wrist_pitch_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="wrist_pitch" type="revolute">
@@ -180,12 +150,6 @@
       </geometry>
       <material name=""><color rgba="0.867 0.910 1 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/wrist_roll_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="wrist_roll" type="continuous">
@@ -210,12 +174,6 @@
       </geometry>
       <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/fr_swerve_yaw_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="fr_swerve_yaw" type="revolute">
@@ -269,12 +227,6 @@
       </geometry>
       <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/br_swerve_yaw_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="br_swerve_yaw" type="revolute">
@@ -328,12 +280,6 @@
       </geometry>
       <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/fl_swerve_yaw_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="fl_swerve_yaw" type="revolute">
@@ -387,12 +333,6 @@
       </geometry>
       <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://intro_rover_description/meshes/bl_swerve_yaw_link.STL" />
-      </geometry>
-    </collision>
   </link>
 
   <joint name="bl_swerve_yaw" type="revolute">

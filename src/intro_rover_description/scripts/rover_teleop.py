@@ -73,42 +73,51 @@ class RoverTeleopNode(Node):
         # Active targets: [FL, FR, BL, BR]
         self.target_v = [0.0, 0.0, 0.0, 0.0]
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
+        self._last_sent_steer = None
 
-        # Timer streaming at 20 Hz
+        # Timer streaming wheel velocities at 20 Hz
         self.timer = self.create_timer(0.05, self.timer_callback)
         self.get_logger().info('Rover teleop node active.')
 
-    def timer_callback(self):
+    def publish_commands(self, force_steer=False):
         # 1. Wheel Velocity Command
         msg_w = Float64MultiArray()
         msg_w.data = [float(v) for v in self.target_v]
         self.wheel_pub.publish(msg_w)
 
-        # 2. Steering Position Trajectory
-        traj_s = JointTrajectory()
-        traj_s.joint_names = self.steer_joints
-        pt_s = JointTrajectoryPoint()
-        pt_s.positions = [float(p) for p in self.target_steer]
-        pt_s.time_from_start = Duration(sec=0, nanosec=int(2e8))
-        traj_s.points = [pt_s]
-        self.steer_pub.publish(traj_s)
+        # 2. Steering Position Trajectory (only send when changed so we don't reset the controller spline every 50ms)
+        if force_steer or self.target_steer != self._last_sent_steer:
+            traj_s = JointTrajectory()
+            traj_s.joint_names = self.steer_joints
+            pt_s = JointTrajectoryPoint()
+            pt_s.positions = [float(p) for p in self.target_steer]
+            pt_s.time_from_start = Duration(sec=0, nanosec=int(5e7))  # 50 ms response
+            traj_s.points = [pt_s]
+            self.steer_pub.publish(traj_s)
+            self._last_sent_steer = list(self.target_steer)
+
+    def timer_callback(self):
+        self.publish_commands(force_steer=False)
 
     def set_drive_forward(self):
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
         self.target_v = [self.speed, self.speed, self.speed, self.speed]
+        self.publish_commands()
 
     def set_drive_backward(self):
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
         self.target_v = [-self.speed, -self.speed, -self.speed, -self.speed]
+        self.publish_commands()
 
     def set_steer_turn(self, direction='left'):
         """
         Coordinates 4-wheel steering:
         Front wheels turn into the angle, rear wheels oppose for a true turn arc.
         """
-        angle = self.steer_angle if direction == 'left' else -self.steer_angle
+        angle = -self.steer_angle if direction == 'left' else self.steer_angle
         self.target_steer = [angle, angle, -angle, -angle]
         self.target_v = [self.speed, self.speed, self.speed, self.speed]
+        self.publish_commands()
 
     def set_turn_in_place(self, direction=1):
         """
@@ -120,26 +129,28 @@ class RoverTeleopNode(Node):
             self.target_v = [self.speed, -self.speed, self.speed, -self.speed]
         else:              # CCW
             self.target_v = [-self.speed, self.speed, -self.speed, self.speed]
+        self.publish_commands()
 
     def stop(self):
         self.target_v = [0.0, 0.0, 0.0, 0.0]
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
+        self.publish_commands(force_steer=True)
 
     def send_arm_positions(self, positions):
         traj = JointTrajectory()
         traj.joint_names = self.arm_joints
         pt = JointTrajectoryPoint()
         pt.positions = [float(p) for p in positions]
-        pt.time_from_start = Duration(sec=1, nanosec=0)
+        pt.time_from_start = Duration(sec=0, nanosec=int(5e8))
         traj.points = [pt]
         self.arm_pub.publish(traj)
 
 
-def get_key(settings, timeout=0.05):
+def get_key(settings, timeout=0.02):
     tty.setraw(sys.stdin.fileno())
     rlist, _, _ = select.select([sys.stdin], [], [], timeout)
     key = sys.stdin.read(1) if rlist else ''
-    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, settings)
     return key
 
 
@@ -172,11 +183,11 @@ def main(args=None):
 
             elif key == 'a':
                 node.set_steer_turn('left')
-                print(f'\r[TURN LEFT] angle: {node.steer_angle:.2f} rad', end='', flush=True)
+                print(f'\r[TURN LEFT] angle: {-node.steer_angle:.2f} rad', end='', flush=True)
 
             elif key == 'd':
                 node.set_steer_turn('right')
-                print(f'\r[TURN RIGHT] angle: {-node.steer_angle:.2f} rad', end='', flush=True)
+                print(f'\r[TURN RIGHT] angle: {node.steer_angle:.2f} rad', end='', flush=True)
 
             elif key == 'q':
                 node.set_turn_in_place(direction=-1)
