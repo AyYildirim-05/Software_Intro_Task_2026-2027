@@ -25,18 +25,6 @@ Remember to go over documentation.
 
 ## PS4 Controller Teleoperation & Mapping Guide
 
-### Running PS4 Teleop
-1. **Terminal 1 (Start Gazebo + RViz + `ros2_control`):**
-   ```bash
-   source install/setup.bash
-   ros2 launch intro_rover_description gazebo_rover.launch.py
-   ```
-2. **Terminal 2 (Start `joy_node` + `joy_demux_node`):**
-   ```bash
-   source install/setup.bash
-   ros2 launch intro_rover_description ps4_teleop.launch.py
-   ```
-
 ### Default Control Layout
 * **Left Stick (`axes[1]` Up/Down, `axes[0]` Left/Right):** Drives the rover (Forward/Backward, 4-Wheel Ackermann turning, and in-place swerve spinning).
 * **Arm Joint Selection Buttons (Chronological from Base $\rightarrow$ End-Effector):**

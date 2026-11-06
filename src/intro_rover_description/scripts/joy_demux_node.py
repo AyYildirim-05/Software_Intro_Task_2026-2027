@@ -234,12 +234,12 @@ class JoyDemuxNode(Node):
         v_in = base_speed * (dist_in / effective_radius)
         v_out = base_speed * (dist_out / effective_radius)
 
-        if turn > 0.0:  # Left
-            self.target_steer = [-theta_out, -theta_in, theta_out, theta_in]
-            self.target_v = [v_out, v_in, v_out, v_in]
-        else:           # Right
+        if turn > 0.0:  # Left (+Y: FL/BL inner, FR/BR outer)
             self.target_steer = [theta_in, theta_out, -theta_in, -theta_out]
             self.target_v = [v_in, v_out, v_in, v_out]
+        else:           # Right (-Y: FR/BR inner, FL/BL outer)
+            self.target_steer = [-theta_out, -theta_in, theta_out, theta_in]
+            self.target_v = [v_out, v_in, v_out, v_in]
 
     def publish_arm_trajectory(self):
         traj = JointTrajectory()

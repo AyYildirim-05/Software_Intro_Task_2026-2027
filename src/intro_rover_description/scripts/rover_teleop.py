@@ -137,17 +137,16 @@ class RoverTeleopNode(Node):
         v_in = self.speed * (dist_in / self.turn_radius)
         v_out = self.speed * (dist_out / self.turn_radius)
 
-        # Preserve inverted 'a'/'d' preference:
-        # 'left' ('a') steers toward -Y (FR/BR are inner, FL/BL are outer)
-        # 'right' ('d') steers toward +Y (FL/BL are inner, FR/BR are outer)
+        # 'left' ('a') steers toward +Y (FL/BL are inner, FR/BR are outer)
+        # 'right' ('d') steers toward -Y (FR/BR are inner, FL/BL are outer)
         if direction == 'left':
-            # [FL, FR, BL, BR]
-            self.target_steer = [-theta_out, -theta_in, theta_out, theta_in]
-            self.target_v = [v_out, v_in, v_out, v_in]
-        else:
             # [FL, FR, BL, BR]
             self.target_steer = [theta_in, theta_out, -theta_in, -theta_out]
             self.target_v = [v_in, v_out, v_in, v_out]
+        else:
+            # [FL, FR, BL, BR]
+            self.target_steer = [-theta_out, -theta_in, theta_out, theta_in]
+            self.target_v = [v_out, v_in, v_out, v_in]
 
         self.publish_commands()
 

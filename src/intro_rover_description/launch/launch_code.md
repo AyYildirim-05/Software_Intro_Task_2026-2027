@@ -16,8 +16,6 @@ ros2 launch intro_rover_description gazebo_rover.launch.py
 ## tele operatpr
 ros2 control list_controllers
 
-cd ~/projects/Software_Intro_Task_2026-2027
-source install/setup.bash
 ros2 run intro_rover_description rover_teleop.py
 
 ## PS4
