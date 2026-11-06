@@ -7,6 +7,8 @@ joy_demux_node:
     drive_forward_axis: 1
     drive_turn_axis: 0
     max_wheel_speed: 8.0        # rad/s
+    spin_ccw_button: 6          # L2 -> Rotate CCW (q)
+    spin_cw_button: 7           # R2 -> Rotate CW  (e)
 
     # Right Stick: Active Arm Joint Control
     #   Axis 3: Right Stick Horizontal (Left/Right)

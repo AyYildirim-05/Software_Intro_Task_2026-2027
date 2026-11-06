@@ -28,6 +28,8 @@ class JoyDemuxNode(Node):
         self.declare_parameter('arm_joint_speed', 1.5)
         self.declare_parameter('arm_joint_buttons', [0, 1, 2, 3, 4, 5])
         self.declare_parameter('arm_reset_button', 9)
+        self.declare_parameter('spin_ccw_button', 6)
+        self.declare_parameter('spin_cw_button', 7)
 
         self.deadzone = self.get_parameter('deadzone').get_parameter_value().double_value
         self.drive_fwd_axis = (
@@ -53,6 +55,12 @@ class JoyDemuxNode(Node):
         )
         self.arm_reset_btn = (
             self.get_parameter('arm_reset_button').get_parameter_value().integer_value
+        )
+        self.spin_ccw_btn = (
+            self.get_parameter('spin_ccw_button').get_parameter_value().integer_value
+        )
+        self.spin_cw_btn = (
+            self.get_parameter('spin_cw_button').get_parameter_value().integer_value
         )
 
         # Subscribe to /joy from joy_node
@@ -179,7 +187,14 @@ class JoyDemuxNode(Node):
         stick_y_cw = r_v
         self.right_stick_val = stick_x_cw if abs(stick_x_cw) >= abs(stick_y_cw) else stick_y_cw
 
-        # 3. Read Left Stick for drivetrain movement
+        # 3. Read L2/R2 spin buttons and Left Stick for drivetrain movement
+        spin_ccw = (
+            self.spin_ccw_btn < len(msg.buttons) and msg.buttons[self.spin_ccw_btn] == 1
+        )
+        spin_cw = (
+            self.spin_cw_btn < len(msg.buttons) and msg.buttons[self.spin_cw_btn] == 1
+        )
+
         fwd = (
             self._apply_deadzone(msg.axes[self.drive_fwd_axis])
             if self.drive_fwd_axis < len(msg.axes)
@@ -194,41 +209,50 @@ class JoyDemuxNode(Node):
         # Publish /cmd_vel Twist message
         twist = Twist()
         twist.linear.x = float(fwd * self.max_wheel_speed * 0.14)  # m/s (wheel radius = 0.14m)
-        twist.angular.z = float(turn * 1.5)                        # rad/s
+        if spin_ccw and not spin_cw:
+            twist.angular.z = 1.5
+        elif spin_cw and not spin_ccw:
+            twist.angular.z = -1.5
+        else:
+            twist.angular.z = float(turn * 1.5)                    # rad/s
         self.cmd_vel_pub.publish(twist)
 
-        # Compute wheel velocities & steering angles from Left Stick
-        self.compute_drivetrain_targets(fwd, turn)
+        # Compute wheel velocities & steering angles from L2/R2 or Left Stick
+        self.compute_drivetrain_targets(fwd, turn, spin_ccw, spin_cw)
 
-    def compute_drivetrain_targets(self, fwd, turn):
+    def compute_drivetrain_targets(self, fwd, turn, spin_ccw=False, spin_cw=False):
+        # Dedicated L2 (CCW / 'q') and R2 (CW / 'e') in-place rotation
+        if spin_ccw and not spin_cw:
+            a = self.in_place_angle
+            v = self.max_wheel_speed
+            self.target_steer = [-a, a, a, -a]
+            self.target_v = [-v, v, -v, v]
+            return
+        if spin_cw and not spin_ccw:
+            a = self.in_place_angle
+            v = self.max_wheel_speed
+            self.target_steer = [-a, a, a, -a]
+            self.target_v = [v, -v, v, -v]
+            return
+
         if fwd == 0.0 and turn == 0.0:
             self.target_v = [0.0, 0.0, 0.0, 0.0]
             self.target_steer = [0.0, 0.0, 0.0, 0.0]
             return
 
-        # Pure horizontal left-stick deflection -> Spin in place
-        if abs(fwd) < 0.05 and abs(turn) > 0.0:
-            a = self.in_place_angle
-            self.target_steer = [-a, a, a, -a]
-            spin_speed = abs(turn) * self.max_wheel_speed
-            if turn < 0.0:  # Stick pushed Right -> CW
-                self.target_v = [spin_speed, -spin_speed, spin_speed, -spin_speed]
-            else:           # Stick pushed Left  -> CCW
-                self.target_v = [-spin_speed, spin_speed, -spin_speed, spin_speed]
-            return
+        mag = min(math.hypot(fwd, turn), 1.0)
+        speed = mag * self.max_wheel_speed
+        base_speed = speed if fwd >= 0.0 else -speed
 
-        # Pure forward/backward -> Straight drive
-        if abs(turn) < 0.05:
-            v = fwd * self.max_wheel_speed
+        # 1. Pure vertical stick deflection -> Straight drive
+        if abs(turn) < 0.20:
             self.target_steer = [0.0, 0.0, 0.0, 0.0]
-            self.target_v = [v, v, v, v]
+            self.target_v = [base_speed, base_speed, base_speed, base_speed]
             return
 
-        # Combined forward/backward + turn -> 4-Wheel Ackermann steering
-        base_speed = fwd * self.max_wheel_speed
-        effective_radius = self.turn_radius / max(abs(turn), 0.2)
-        r_in_lat = max(effective_radius - self.half_track, 0.3)
-        r_out_lat = effective_radius + self.half_track
+        # 2. Left/Right or Diagonal stick deflection -> Fixed-geometry 4-Wheel Ackermann turn
+        r_in_lat = self.turn_radius - self.half_track
+        r_out_lat = self.turn_radius + self.half_track
 
         theta_in = math.atan2(self.half_wheelbase, r_in_lat)
         theta_out = math.atan2(self.half_wheelbase, r_out_lat)
@@ -236,8 +260,8 @@ class JoyDemuxNode(Node):
         dist_in = math.hypot(r_in_lat, self.half_wheelbase)
         dist_out = math.hypot(r_out_lat, self.half_wheelbase)
 
-        v_in = base_speed * (dist_in / effective_radius)
-        v_out = base_speed * (dist_out / effective_radius)
+        v_in = base_speed * (dist_in / self.turn_radius)
+        v_out = base_speed * (dist_out / self.turn_radius)
 
         if turn > 0.0:  # Left (+Y: FL/BL inner, FR/BR outer)
             self.target_steer = [theta_in, theta_out, -theta_in, -theta_out]
