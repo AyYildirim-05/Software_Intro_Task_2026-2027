@@ -4,16 +4,13 @@ joy_demux_node:
     deadzone: 0.12
 
     # Left Stick: Rover Drivetrain Movement
-    # Standard Linux PS4 joy_node axes:
-    #   Axis 0: Left Stick Horizontal (+1.0 = Left, -1.0 = Right)
-    #   Axis 1: Left Stick Vertical   (+1.0 = Up/Forward, -1.0 = Down/Backward)
     drive_forward_axis: 1
     drive_turn_axis: 0
     max_wheel_speed: 8.0        # rad/s
 
     # Right Stick: Active Arm Joint Control
-    #   Axis 3: Right Stick Horizontal
-    #   Axis 4: Right Stick Vertical
+    #   Axis 3: Right Stick Horizontal (Left/Right)
+    #   Axis 4: Right Stick Vertical   (Up/Down)
     # Positive value -> Clockwise (+), Negative value -> Counter-Clockwise (-)
     arm_stick_horizontal_axis: 3
     arm_stick_vertical_axis: 4
