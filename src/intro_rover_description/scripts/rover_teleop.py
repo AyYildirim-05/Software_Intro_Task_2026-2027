@@ -27,13 +27,23 @@ Motion Controls (Hold to move, release to stop):
    e : Rotate CW (In-Place Swerve)
 
 Speed Tuning:
-   + / = : Increase wheel velocity
-   -     : Decrease wheel velocity
+   ] : Increase wheel velocity
+   [ : Decrease wheel velocity
 
 Arm Preset Controls:
    1 : Home Pose
    2 : Reach Pose
    3 : High / Wave Pose
+
+Arm Joint Selection (Chronological Base -> Tip):
+   5 : shoulder_yaw
+   6 : shoulder_pitch
+   7 : elbow_pitch
+   8 : elbow_roll
+   9 : wrist_pitch
+   0 : wrist_roll
+   - : Rotate selected joint CCW (-)
+   = : Rotate selected joint CW (+)
 
 Exit:
    x / Ctrl+C : Quit
@@ -67,6 +77,14 @@ class RoverTeleopNode(Node):
             'wrist_pitch',
             'wrist_roll',
         ]
+        self.arm_limits = {
+            'shoulder_pitch': (-1.57, 1.57),
+            'elbow_pitch': (-1.57, 1.57),
+            'wrist_pitch': (-1.57, 1.57),
+        }
+        self.arm_positions = [0.0] * len(self.arm_joints)
+        self.active_arm_joint_idx = 0  # Default to shoulder_yaw (key '5')
+        self.arm_step = 0.10           # radians per key press
 
         # Rover chassis geometry from URDF (meters)
         self.half_wheelbase = 0.445   # L / 2 (front/rear distance from center)
@@ -184,14 +202,26 @@ class RoverTeleopNode(Node):
         self.target_steer = [0.0, 0.0, 0.0, 0.0]
         self.publish_commands(force_steer=True)
 
-    def send_arm_positions(self, positions):
+    def send_arm_positions(self, positions, duration_ns=int(5e8)):
+        self.arm_positions = [float(p) for p in positions]
         traj = JointTrajectory()
         traj.joint_names = self.arm_joints
         pt = JointTrajectoryPoint()
-        pt.positions = [float(p) for p in positions]
-        pt.time_from_start = Duration(sec=0, nanosec=int(5e8))
+        pt.positions = list(self.arm_positions)
+        pt.time_from_start = Duration(sec=0, nanosec=duration_ns)
         traj.points = [pt]
         self.arm_pub.publish(traj)
+
+    def step_active_arm_joint(self, direction):
+        idx = self.active_arm_joint_idx
+        joint_name = self.arm_joints[idx]
+        new_pos = self.arm_positions[idx] + (direction * self.arm_step)
+        if joint_name in self.arm_limits:
+            low, high = self.arm_limits[joint_name]
+            new_pos = max(low, min(high, new_pos))
+        self.arm_positions[idx] = new_pos
+        self.send_arm_positions(self.arm_positions, duration_ns=int(1e8))
+        return joint_name, new_pos
 
 
 def get_key(settings, timeout=0.02):
@@ -271,15 +301,43 @@ def main(args=None):
                 node.set_turn_in_place(direction=1)
                 print('\r[TURN CW]                           ', end='', flush=True)
 
-            elif key in ('+', '='):
+            elif key == ']':
                 node.speed = min(30.0, node.speed + 1.0)
                 node.refresh_motion()
                 print(f'\r[SPEED UP] current: {node.speed:.1f} rad/s    ', end='', flush=True)
 
-            elif key == '-':
+            elif key == '[':
                 node.speed = max(0.5, node.speed - 1.0)
                 node.refresh_motion()
                 print(f'\r[SPEED DOWN] current: {node.speed:.1f} rad/s  ', end='', flush=True)
+
+            elif key in ('5', '6', '7', '8', '9', '0'):
+                key_to_idx = {'5': 0, '6': 1, '7': 2, '8': 3, '9': 4, '0': 5}
+                idx = key_to_idx[key]
+                node.active_arm_joint_idx = idx
+                j_name = node.arm_joints[idx]
+                j_pos = node.arm_positions[idx]
+                print(
+                    f'\r[ARM JOINT {idx + 1}/6] {j_name} ({j_pos:+.2f} rad)   ',
+                    end='',
+                    flush=True,
+                )
+
+            elif key in ('=', '+'):
+                j_name, j_pos = node.step_active_arm_joint(direction=1)
+                print(
+                    f'\r[ARM CW +] {j_name}: {j_pos:+.2f} rad          ',
+                    end='',
+                    flush=True,
+                )
+
+            elif key == '-':
+                j_name, j_pos = node.step_active_arm_joint(direction=-1)
+                print(
+                    f'\r[ARM CCW -] {j_name}: {j_pos:+.2f} rad         ',
+                    end='',
+                    flush=True,
+                )
 
             elif key == '1':
                 node.send_arm_positions([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])

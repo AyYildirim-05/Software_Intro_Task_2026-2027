@@ -23,6 +23,36 @@ Remember to go over documentation.
 
 ---
 
+## Keyboard Teleoperation Controls (`rover_teleop.py`)
+
+* **Rover Motion (Hold to move, release to stop):**
+  * `w` : Drive Forward
+  * `s` : Drive Backward
+  * `a` : Turn Left (4-Wheel Ackermann)
+  * `d` : Turn Right (4-Wheel Ackermann)
+  * `q` : Rotate CCW (In-Place Swerve)
+  * `e` : Rotate CW (In-Place Swerve)
+* **Wheel Speed Tuning:**
+  * `]` : Increase wheel velocity
+  * `[` : Decrease wheel velocity
+* **Predefined Arm Poses:**
+  * `1` : Home Pose
+  * `2` : Reach Pose
+  * `3` : High / Wave Pose
+* **Individual Arm Joint Control (Chronological Base $\rightarrow$ End-Effector):**
+  * `5` : Select `shoulder_yaw` *(default)*
+  * `6` : Select `shoulder_pitch`
+  * `7` : Select `elbow_pitch`
+  * `8` : Select `elbow_roll`
+  * `9` : Select `wrist_pitch`
+  * `0` : Select `wrist_roll`
+  * `-` : Rotate selected arm joint **CCW (`-0.10` rad)**
+  * `=` (or `+`) : Rotate selected arm joint **CW (`+0.10` rad)**
+* **Exit:**
+  * `x` or `Ctrl+C` : Quit
+
+---
+
 ## PS4 Controller Teleoperation & Mapping Guide
 
 ### Default Control Layout
