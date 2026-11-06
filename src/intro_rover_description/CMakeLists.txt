@@ -13,6 +13,7 @@ find_package(urdf REQUIRED)
 install(PROGRAMS
   scripts/jointstate.py
   scripts/rover_teleop.py
+  scripts/joy_demux_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

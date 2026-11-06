@@ -1,0 +1,32 @@
+joy_demux_node:
+  ros__parameters:
+    # Deadzone to prevent stick drift
+    deadzone: 0.12
+
+    # Left Stick: Rover Drivetrain Movement
+    # Standard Linux PS4 joy_node axes:
+    #   Axis 0: Left Stick Horizontal (+1.0 = Left, -1.0 = Right)
+    #   Axis 1: Left Stick Vertical   (+1.0 = Up/Forward, -1.0 = Down/Backward)
+    drive_forward_axis: 1
+    drive_turn_axis: 0
+    max_wheel_speed: 8.0        # rad/s
+
+    # Right Stick: Active Arm Joint Control
+    #   Axis 3: Right Stick Horizontal
+    #   Axis 4: Right Stick Vertical
+    # Positive value -> Clockwise (+), Negative value -> Counter-Clockwise (-)
+    arm_stick_horizontal_axis: 3
+    arm_stick_vertical_axis: 4
+    arm_joint_speed: 1.5        # rad/s at full stick deflection
+
+    # Chronological Arm Joint Button Mapping (Base -> End-Effector)
+    # Standard Linux PS4 joy_node buttons:
+    #   0: Cross (X)      -> 1. shoulder_yaw
+    #   1: Circle (O)     -> 2. shoulder_pitch
+    #   2: Triangle       -> 3. elbow_pitch
+    #   3: Square         -> 4. elbow_roll
+    #   4: L1             -> 5. wrist_pitch
+    #   5: R1             -> 6. wrist_roll
+    arm_joint_buttons: [0, 1, 2, 3, 4, 5]
+    # Optional: Button 9 (Options) resets all arm joints to home (0.0)
+    arm_reset_button: 9
