@@ -11,7 +11,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/base_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+      <material name="chassis_grey"><color rgba="0.38 0.40 0.43 1" /></material>
     </visual>
     <collision>
       <origin xyz="-0.15 0 0.15" rpy="0 0 0" />
@@ -33,7 +33,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/shoulder_yaw_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -56,7 +56,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/shoulder_pitch_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -79,7 +79,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/elbow_pitch_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -102,7 +102,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/elbow_roll_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -125,7 +125,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/wrist_pitch_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -148,7 +148,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/wrist_roll_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.867 0.910 1 1" /></material>
+      <material name="arm_grey"><color rgba="0.48 0.50 0.54 1" /></material>
     </visual>
   </link>
 
@@ -172,7 +172,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/fr_swerve_yaw_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+      <material name="swerve_grey"><color rgba="0.38 0.40 0.43 1" /></material>
     </visual>
   </link>
 
@@ -195,7 +195,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/fr_wheel_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+      <material name="wheel_grey"><color rgba="0.22 0.23 0.25 1" /></material>
     </visual>
     <collision>
       <origin xyz="0 0.06 0" rpy="1.5707963 0 0" />
@@ -225,7 +225,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/br_swerve_yaw_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+      <material name="swerve_grey"><color rgba="0.38 0.40 0.43 1" /></material>
     </visual>
   </link>
 
@@ -248,7 +248,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/br_wheel_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+      <material name="wheel_grey"><color rgba="0.22 0.23 0.25 1" /></material>
     </visual>
     <collision>
       <origin xyz="0 0.06 0" rpy="1.5707963 0 0" />
@@ -278,7 +278,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/fl_swerve_yaw_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+      <material name="swerve_grey"><color rgba="0.38 0.40 0.43 1" /></material>
     </visual>
   </link>
 
@@ -301,7 +301,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/fl_wheel_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+      <material name="wheel_grey"><color rgba="0.22 0.23 0.25 1" /></material>
     </visual>
     <collision>
       <origin xyz="0 -0.06 0" rpy="1.5707963 0 0" />
@@ -331,7 +331,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/bl_swerve_yaw_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.898 0.918 0.929 1" /></material>
+      <material name="swerve_grey"><color rgba="0.38 0.40 0.43 1" /></material>
     </visual>
   </link>
 
@@ -354,7 +354,7 @@
       <geometry>
         <mesh filename="package://intro_rover_description/meshes/bl_wheel_link.STL" />
       </geometry>
-      <material name=""><color rgba="0.792 0.820 0.933 1" /></material>
+      <material name="wheel_grey"><color rgba="0.22 0.23 0.25 1" /></material>
     </visual>
     <collision>
       <origin xyz="0 -0.06 0" rpy="1.5707963 0 0" />
